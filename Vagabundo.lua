@@ -684,9 +684,15 @@ local Window = Luna:CreateWindow({
    KeySystem = false,
 })
 
-local SpinsTab  = Window:CreateTab({Name = "🎰 Spins",  ShowTitle = true})
-local RankedTab = Window:CreateTab({Name = "🏐 Ranked", ShowTitle = true})
-local MiscTab   = Window:CreateTab({Name = "⚙️ Misc",   ShowTitle = true})
+local SpinsTab   = Window:CreateTab({Name = "🎰 Spins",       ShowTitle = true})
+local RankedTab  = Window:CreateTab({Name = "🏐 Ranked",      ShowTitle = true})
+local MiscTab    = Window:CreateTab({Name = "⚙️ Misc",         ShowTitle = true})
+local CharTab    = Window:CreateTab({Name = "Character",       Icon = "user-round",     ImageSource = "Lucide", ShowTitle = true})
+local HelpersTab = Window:CreateTab({Name = "Helpers",         Icon = "eye",            ImageSource = "Lucide", ShowTitle = true})
+local OthersTab  = Window:CreateTab({Name = "Others",          Icon = "alert-triangle", ImageSource = "Lucide", ShowTitle = true})
+local HitboxTab  = Window:CreateTab({Name = "🎯 Hitboxes",     Icon = "target",         ImageSource = "Lucide", ShowTitle = true})
+local UtilTab    = Window:CreateTab({Name = "⚙️ Utilities",    Icon = "settings",       ImageSource = "Lucide", ShowTitle = true})
+local InfoTab    = Window:CreateTab({Name = "📊 Info",          Icon = "info",           ImageSource = "Lucide", ShowTitle = true})
 
 -- Rank section and all Misc content created inside _createMiscContent (password-gated below)
 local selectedRank = 1
@@ -2035,7 +2041,9 @@ end)
 -- =====================================
 -- CHARACTER TAB
 -- =====================================
-local CharTab = Window:CreateTab({Name = "Character", Icon = "user-round", ImageSource = "Lucide", ShowTitle = true})
+-- =====================================
+-- CHARACTER TAB
+-- =====================================
 CharTab:CreateSection("Movement")
 
 CharTab:CreateToggle({
@@ -2106,7 +2114,9 @@ CharTab:CreateColorPicker({
 -- =====================================
 -- HELPERS TAB
 -- =====================================
-local HelpersTab = Window:CreateTab({Name = "Helpers", Icon = "eye", ImageSource = "Lucide", ShowTitle = true})
+-- =====================================
+-- HELPERS TAB
+-- =====================================
 HelpersTab:CreateSection("Directional Lines")
 
 local _lineLenSlider = nil
@@ -2182,7 +2192,9 @@ HelpersTab:CreateToggle({
 -- =====================================
 -- OTHERS TAB
 -- =====================================
-local OthersTab = Window:CreateTab({Name = "Others", Icon = "alert-triangle", ImageSource = "Lucide", ShowTitle = true})
+-- =====================================
+-- OTHERS TAB
+-- =====================================
 OthersTab:CreateSection("Utility")
 
 OthersTab:CreateButton({
@@ -2223,8 +2235,9 @@ OthersTab:CreateButton({
 -- =====================================
 -- 🎯 HITBOXES TAB
 -- =====================================
-local HitboxTab = Window:CreateTab({Name = "🎯 Hitboxes", Icon = "target", ImageSource = "Lucide", ShowTitle = true})
-
+-- =====================================
+-- 🎯 HITBOXES TAB
+-- =====================================
 HitboxTab:CreateToggle({
     Name = "⚡ Enable Hitboxes",
     CurrentValue = Hitbox.Enabled,
@@ -2326,8 +2339,9 @@ HitboxTab:CreateButton({
 -- =====================================
 -- ⚙️ UTILITIES TAB
 -- =====================================
-local UtilTab = Window:CreateTab({Name = "⚙️ Utilities", Icon = "settings", ImageSource = "Lucide", ShowTitle = true})
-
+-- =====================================
+-- ⚙️ UTILITIES TAB
+-- =====================================
 UtilTab:CreateButton({
     Name = "🧹 Clear Hitboxes",
     Callback = function()
@@ -2360,8 +2374,9 @@ UtilTab:CreateParagraph({
 -- =====================================
 -- 📊 INFO TAB
 -- =====================================
-local InfoTab = Window:CreateTab({Name = "📊 Info", Icon = "info", ImageSource = "Lucide", ShowTitle = true})
-
+-- =====================================
+-- 📊 INFO TAB
+-- =====================================
 InfoTab:CreateParagraph({
     Title = "🎯 Dynamic Hitbox System",
     Text = "⚡ Auto-changing hitbox sizes\n🎨 Custom colors & transparency\n🔄 Random updates every interval\n🧹 Easy cleanup & unload"
