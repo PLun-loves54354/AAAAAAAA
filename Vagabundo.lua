@@ -701,7 +701,7 @@ local selectedRank = 1
 local SpinsSection = SpinsTab:CreateSection("Auto Claim")
 
 for _, r in ipairs(REWARDS) do
-	SpinsTab:CreateToggle({
+	SpinsSection:CreateToggle({
 		Name = r.label,
 		CurrentValue = false,
 		Callback = function(Value)
@@ -713,7 +713,7 @@ end
 -- ==================== RANKED TAB
 local RankedSection = RankedTab:CreateSection("Game Features")
 
-RankedTab:CreateToggle({
+RankedSection:CreateToggle({
 	Name = "Auto Spike Aim",
 	CurrentValue = false,
 	Callback = function(Value)
@@ -722,7 +722,7 @@ RankedTab:CreateToggle({
 	end,
 }, "AutoSpikeAim")
 
-RankedTab:CreateDropdown({
+RankedSection:CreateDropdown({
 	Name = "Aim Strategy",
 	Options = {"Biggest Gap", "Court Edges", "Target Landed", "Avoid Blockers", "Weakest Spot"},
 	CurrentOption = {selectedAimMode},
@@ -734,7 +734,7 @@ RankedTab:CreateDropdown({
 }, "AimStrategy")
 
 
-RankedTab:CreateToggle({
+RankedSection:CreateToggle({
 	Name = "Auto Set",
 	CurrentValue = autoReceiveEnabled,
 	Callback = function(Value)
@@ -743,7 +743,7 @@ RankedTab:CreateToggle({
 	end,
 }, "AutoSet")
 
-RankedTab:CreateToggle({
+RankedSection:CreateToggle({
 	Name = "Auto Spike",
 	CurrentValue = autoSpikeEnabled,
 	Callback = function(Value)
@@ -754,7 +754,7 @@ RankedTab:CreateToggle({
 
 
 
-RankedTab:CreateToggle({
+RankedSection:CreateToggle({
 	Name = "Auto Back Block",
 	CurrentValue = false,
 	Callback = function(Value)
@@ -1489,8 +1489,8 @@ local netMapThickness = 1.00
 -- ── Misc tab password gate ────────────────────────────────────────────────────
 local miscUnlocked = false
 
-MiscTab:CreateSection("Access")
-MiscTab:CreateInput({
+local MiscAccessSection = MiscTab:CreateSection("Access")
+MiscAccessSection:CreateInput({
 	Name        = "Admin Password",
 	PlaceholderText = "Enter password...",
 	RemoveTextAfterFocusLost = true,
@@ -1503,8 +1503,8 @@ MiscTab:CreateInput({
 }, "AdminPass")
 
 function _createMiscContent()
-	MiscTab:CreateSection("Rank Selection")
-	MiscTab:CreateDropdown({
+	local MiscRankSection = MiscTab:CreateSection("Rank Selection")
+	MiscRankSection:CreateDropdown({
 		Name = "Select Your Rank",
 		Options = {"Bronze 1", "Bronze 2", "Bronze 3", "Silver 1", "Silver 2", "Silver 3", "Gold 1", "Gold 2", "Gold 3", "Diamond 1", "Diamond 2", "Diamond 3", "Pro"},
 		CurrentOption = {"Bronze 1"},
@@ -1521,10 +1521,10 @@ function _createMiscContent()
 		end,
 	}, "SelectedRank")
 
-	MiscTab:CreateSection("Court Mapping")
+	local MiscCourtSection = MiscTab:CreateSection("Court Mapping")
 
 -- UI Controls
-MiscTab:CreateToggle({
+MiscCourtSection:CreateToggle({
 	Name = "Smart Aim Area",
 	CurrentValue = false,
 	Callback = function(Value)
@@ -1545,7 +1545,7 @@ MiscTab:CreateToggle({
 	end,
 }, "SmartAimArea")
 
-MiscTab:CreateToggle({
+MiscCourtSection:CreateToggle({
 	Name = "Smart Aim Area 2",
 	CurrentValue = false,
 	Callback = function(Value)
@@ -1553,7 +1553,7 @@ MiscTab:CreateToggle({
 	end,
 }, "SmartAimArea2")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Aim Area 2 Width",
 	Range = {5, 500},
 	Increment = 0.5,
@@ -1563,7 +1563,7 @@ MiscTab:CreateSlider({
 	end,
 }, "AimArea2Width")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Aim Area 2 Length",
 	Range = {5, 500},
 	Increment = 0.5,
@@ -1573,7 +1573,7 @@ MiscTab:CreateSlider({
 	end,
 }, "AimArea2Length")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Aim Area 2 Floor Height",
 	Range = {-200, 200},
 	Increment = 0.1,
@@ -1583,7 +1583,7 @@ MiscTab:CreateSlider({
 	end,
 }, "AimArea2FloorY")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Aim Area 2 Position X",
 	Range = {-100, 100},
 	Increment = 0.5,
@@ -1593,7 +1593,7 @@ MiscTab:CreateSlider({
 	end,
 }, "AimArea2PosX")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Aim Area 2 Position Z",
 	Range = {-100, 100},
 	Increment = 0.5,
@@ -1603,7 +1603,7 @@ MiscTab:CreateSlider({
 	end,
 }, "AimArea2PosZ")
 
-MiscTab:CreateToggle({
+MiscCourtSection:CreateToggle({
 	Name = "Net Mapping Tool",
 	CurrentValue = false,
 	Callback = function(Value)
@@ -1611,7 +1611,7 @@ MiscTab:CreateToggle({
 	end,
 }, "NetMappingTool")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Smart Aim Width",
 	Range = {5, 500},
 	Increment = 0.5,
@@ -1621,7 +1621,7 @@ MiscTab:CreateSlider({
 	end,
 }, "SmartAimWidth")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Smart Aim Length",
 	Range = {5, 500},
 	Increment = 0.5,
@@ -1631,7 +1631,7 @@ MiscTab:CreateSlider({
 	end,
 }, "SmartAimLength")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Smart Aim Floor Height",
 	Range = {-200, 200},
 	Increment = 0.1,
@@ -1641,7 +1641,7 @@ MiscTab:CreateSlider({
 	end,
 }, "SmartAimFloorY")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Smart Aim Position X",
 	Range = {-100, 100},
 	Increment = 0.5,
@@ -1651,7 +1651,7 @@ MiscTab:CreateSlider({
 	end,
 }, "SmartAimPosX")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Smart Aim Position Z",
 	Range = {-100, 100},
 	Increment = 0.5,
@@ -1661,7 +1661,7 @@ MiscTab:CreateSlider({
 	end,
 }, "SmartAimPosZ")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Net Position X",
 	Range = {-200, 200},
 	Increment = 0.1,
@@ -1671,7 +1671,7 @@ MiscTab:CreateSlider({
 	end,
 }, "NetPosX")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Net Position Y",
 	Range = {-200, 200},
 	Increment = 0.1,
@@ -1681,7 +1681,7 @@ MiscTab:CreateSlider({
 	end,
 }, "NetPosY")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Net Position Z",
 	Range = {-200, 200},
 	Increment = 0.1,
@@ -1691,7 +1691,7 @@ MiscTab:CreateSlider({
 	end,
 }, "NetPosZ")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Net Width",
 	Range = {0, 500},
 	Increment = 0.1,
@@ -1701,7 +1701,7 @@ MiscTab:CreateSlider({
 	end,
 }, "NetWidth")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Net Height",
 	Range = {0, 10},
 	Increment = 0.1,
@@ -1711,7 +1711,7 @@ MiscTab:CreateSlider({
 	end,
 }, "NetHeight")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Net Thickness",
 	Range = {0, 10},
 	Increment = 0.1,
@@ -1722,7 +1722,7 @@ MiscTab:CreateSlider({
 }, "NetThickness")
 
 -- SECOND FLOOR ZONE UI
-MiscTab:CreateToggle({
+MiscCourtSection:CreateToggle({
 	Name = "Second Floor Zone",
 	CurrentValue = false,
 	Callback = function(Value)
@@ -1730,7 +1730,7 @@ MiscTab:CreateToggle({
 	end,
 }, "SecondFloorZone")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Zone 2 Width",
 	Range = {5, 500},
 	Increment = 0.5,
@@ -1740,7 +1740,7 @@ MiscTab:CreateSlider({
 	end,
 }, "Zone2Width")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Zone 2 Length",
 	Range = {5, 500},
 	Increment = 0.5,
@@ -1750,7 +1750,7 @@ MiscTab:CreateSlider({
 	end,
 }, "Zone2Length")
 
-MiscTab:CreateSlider({
+MiscCourtSection:CreateSlider({
 	Name = "Zone 2 Floor Height",
 	Range = {-200, 200},
 	Increment = 0.1,
@@ -2041,12 +2041,9 @@ end)
 -- =====================================
 -- CHARACTER TAB
 -- =====================================
--- =====================================
--- CHARACTER TAB
--- =====================================
-CharTab:CreateSection("Movement")
+local CharMovSection = CharTab:CreateSection("Movement")
 
-CharTab:CreateToggle({
+CharMovSection:CreateToggle({
 	Name = "Directional Jump",
 	CurrentValue = directionalJumpEnabled,
 	Callback = function(val)
@@ -2056,7 +2053,7 @@ CharTab:CreateToggle({
 	end,
 }, "DirectionalJump")
 
-CharTab:CreateParagraph({
+CharMovSection:CreateParagraph({
 	Title = "How to Use",
 	Text = "Disable shift-lock. Character auto-steers toward camera direction on jump.",
 })
@@ -2067,14 +2064,14 @@ local function _destroyAirSpeedSlider()
 end
 local function _createAirSpeedSlider()
 	if _airSpeedSlider then return end
-	_airSpeedSlider = CharTab:CreateSlider({
+	_airSpeedSlider = CharMovSection:CreateSlider({
 		Name = "Air Move Speed", Range = {10, 150}, Increment = 5,
 		CurrentValue = AirMoveSpeed,
 		Callback = function(v) AirMoveSpeed = v; saveConfig() end,
 	}, "AirSpeed")
 end
 
-CharTab:CreateToggle({
+CharMovSection:CreateToggle({
 	Name = "Air Movement",
 	CurrentValue = moveInAirEnabled,
 	Callback = function(val)
@@ -2085,9 +2082,9 @@ CharTab:CreateToggle({
 }, "AirMovement")
 if moveInAirEnabled then _createAirSpeedSlider() end
 
-CharTab:CreateSection("ESP")
+local CharEspSection = CharTab:CreateSection("ESP")
 
-CharTab:CreateToggle({
+CharEspSection:CreateToggle({
 	Name = "Character ESP (Clone)",
 	CurrentValue = CloneESP.enabled,
 	Callback = function(val)
@@ -2100,7 +2097,7 @@ CharTab:CreateToggle({
 	end,
 }, "CharESP")
 
-CharTab:CreateColorPicker({
+CharEspSection:CreateColorPicker({
 	Name = "Clone ESP Color",
 	Color = CloneESP.color,
 	Callback = function(color)
@@ -2117,7 +2114,7 @@ CharTab:CreateColorPicker({
 -- =====================================
 -- HELPERS TAB
 -- =====================================
-HelpersTab:CreateSection("Directional Lines")
+local HelpLinesSection = HelpersTab:CreateSection("Directional Lines")
 
 local _lineLenSlider = nil
 local function _destroyLineLenSlider()
@@ -2125,14 +2122,14 @@ local function _destroyLineLenSlider()
 end
 local function _createLineLenSlider()
 	if _lineLenSlider then return end
-	_lineLenSlider = HelpersTab:CreateSlider({
+	_lineLenSlider = HelpLinesSection:CreateSlider({
 		Name = "Line Distance", Range = {10, 100}, Increment = 10,
 		CurrentValue = lineDistance,
 		Callback = function(v) lineDistance = v; saveConfig() end,
 	}, "LineLen")
 end
 
-HelpersTab:CreateToggle({
+HelpLinesSection:CreateToggle({
 	Name = "Enemy Look Lines",
 	CurrentValue = linesEnabled,
 	Callback = function(val)
@@ -2147,9 +2144,9 @@ HelpersTab:CreateToggle({
 }, "LookLines")
 if linesEnabled then _createLineLenSlider() end
 
-HelpersTab:CreateSection("Auto Tilt")
+local HelpTiltSection = HelpersTab:CreateSection("Auto Tilt")
 
-HelpersTab:CreateToggle({
+HelpTiltSection:CreateToggle({
 	Name = "Auto Tilt (recommended for setters)",
 	CurrentValue = autoTiltEnabled,
 	Callback = function(val)
@@ -2158,7 +2155,7 @@ HelpersTab:CreateToggle({
 	end,
 }, "AutoTilt")
 
-HelpersTab:CreateInput({
+HelpTiltSection:CreateInput({
 	Name = "Tilt Toggle Key (PC)",
 	PlaceholderText = "Ex: Z",
 	RemoveTextAfterFocusLost = true,
@@ -2171,14 +2168,14 @@ HelpersTab:CreateInput({
 	end,
 }, "TiltKey")
 
-HelpersTab:CreateParagraph({
+HelpTiltSection:CreateParagraph({
 	Title = "How Auto Tilt works",
 	Text = "While in Freefall the character leans toward where your camera looks, without needing joystick/W input.",
 })
 
-HelpersTab:CreateSection("Enemy ESP")
+local HelpEspSection = HelpersTab:CreateSection("Enemy ESP")
 
-HelpersTab:CreateToggle({
+HelpEspSection:CreateToggle({
 	Name = "Enemy Jump ESP",
 	CurrentValue = enemyJumpESPEnabled,
 	Callback = function(val)
@@ -2192,19 +2189,16 @@ HelpersTab:CreateToggle({
 -- =====================================
 -- OTHERS TAB
 -- =====================================
--- =====================================
--- OTHERS TAB
--- =====================================
-OthersTab:CreateSection("Utility")
+local OthersSection = OthersTab:CreateSection("Utility")
 
-OthersTab:CreateButton({
+OthersSection:CreateButton({
 	Name = "Rejoin Server",
 	Callback = function()
 		pcall(function() TeleportService:Teleport(game.PlaceId, player) end)
 	end,
 })
 
-OthersTab:CreateButton({
+OthersSection:CreateButton({
 	Name = "Panic Mode (Disable All)",
 	Callback = function()
 		-- Spike / receive
@@ -2235,10 +2229,8 @@ OthersTab:CreateButton({
 -- =====================================
 -- 🎯 HITBOXES TAB
 -- =====================================
--- =====================================
--- 🎯 HITBOXES TAB
--- =====================================
-HitboxTab:CreateToggle({
+local HitboxSection = HitboxTab:CreateSection("Controls")
+HitboxSection:CreateToggle({
     Name = "⚡ Enable Hitboxes",
     CurrentValue = Hitbox.Enabled,
     Callback = function(state)
@@ -2254,7 +2246,7 @@ HitboxTab:CreateToggle({
     end
 }, "HitboxEnabled")
 
-HitboxTab:CreateSlider({
+HitboxSection:CreateSlider({
     Name = "🔄 Update Interval",
     Range = {1, 30},
     Increment = 1,
@@ -2265,7 +2257,7 @@ HitboxTab:CreateSlider({
     end
 }, "DynHitboxInterval")
 
-HitboxTab:CreateSlider({
+HitboxSection:CreateSlider({
     Name = "📏 Min Size",
     Range = {0.5, 5},
     Increment = 0.1,
@@ -2276,7 +2268,7 @@ HitboxTab:CreateSlider({
     end
 }, "DynHitboxMinSize")
 
-HitboxTab:CreateSlider({
+HitboxSection:CreateSlider({
     Name = "📐 Max Size",
     Range = {1, 15},
     Increment = 0.1,
@@ -2287,7 +2279,7 @@ HitboxTab:CreateSlider({
     end
 }, "DynHitboxMaxSize")
 
-HitboxTab:CreateColorPicker({
+HitboxSection:CreateColorPicker({
     Name = "🎨 Color",
     Color = Hitbox.Color,
     Callback = function(color)
@@ -2296,7 +2288,7 @@ HitboxTab:CreateColorPicker({
     end
 }, "DynHitboxColor")
 
-HitboxTab:CreateSlider({
+HitboxSection:CreateSlider({
     Name = "🔍 Transparency",
     Range = {0, 1},
     Increment = 0.05,
@@ -2307,7 +2299,7 @@ HitboxTab:CreateSlider({
     end
 }, "DynHitboxTransp")
 
-HitboxTab:CreateButton({
+HitboxSection:CreateButton({
     Name = "🔄 Update Now",
     Callback = function()
         if Hitbox.Enabled then
@@ -2317,7 +2309,7 @@ HitboxTab:CreateButton({
     end
 })
 
-HitboxTab:CreateButton({
+HitboxSection:CreateButton({
     Name = "🎲 Random Color",
     Callback = function()
         Hitbox.Color = Color3.fromRGB(
@@ -2339,10 +2331,8 @@ HitboxTab:CreateButton({
 -- =====================================
 -- ⚙️ UTILITIES TAB
 -- =====================================
--- =====================================
--- ⚙️ UTILITIES TAB
--- =====================================
-UtilTab:CreateButton({
+local UtilSection = UtilTab:CreateSection("Actions")
+UtilSection:CreateButton({
     Name = "🧹 Clear Hitboxes",
     Callback = function()
         Hitbox:Cleanup()
@@ -2350,14 +2340,14 @@ UtilTab:CreateButton({
     end
 })
 
-UtilTab:CreateButton({
+UtilSection:CreateButton({
     Name = "🔄 Rejoin Server",
     Callback = function()
         TeleportService:Teleport(game.PlaceId, player)
     end
 })
 
-UtilTab:CreateButton({
+UtilSection:CreateButton({
     Name = "🔴 Unload Script",
     Callback = function()
         Luna:Notification({ Title = "🔴 Unloading...", Content = "Removing everything" })
@@ -2366,7 +2356,7 @@ UtilTab:CreateButton({
     end
 })
 
-UtilTab:CreateParagraph({
+UtilSection:CreateParagraph({
     Title = "⚠️ Warning",
     Text = "Unload will remove ALL hitboxes and close UI. Use 'Clear Hitboxes' to just remove visuals."
 })
@@ -2377,12 +2367,13 @@ UtilTab:CreateParagraph({
 -- =====================================
 -- 📊 INFO TAB
 -- =====================================
-InfoTab:CreateParagraph({
+local InfoSection = InfoTab:CreateSection("About")
+InfoSection:CreateParagraph({
     Title = "🎯 Dynamic Hitbox System",
     Text = "⚡ Auto-changing hitbox sizes\n🎨 Custom colors & transparency\n🔄 Random updates every interval\n🧹 Easy cleanup & unload"
 })
 
-InfoTab:CreateButton({
+InfoSection:CreateButton({
     Name = "📊 Show Status",
     Callback = function()
         Luna:Notification({
