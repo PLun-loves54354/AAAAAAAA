@@ -684,15 +684,15 @@ local Window = Luna:CreateWindow({
    KeySystem = false,
 })
 
-local SpinsTab   = Window:CreateTab({Name = "🎰 Spins",       ShowTitle = true})
-local RankedTab  = Window:CreateTab({Name = "🏐 Ranked",      ShowTitle = true})
-local MiscTab    = Window:CreateTab({Name = "⚙️ Misc",         ShowTitle = true})
-local CharTab    = Window:CreateTab({Name = "Character",       Icon = "user-round",     ImageSource = "Lucide", ShowTitle = true})
-local HelpersTab = Window:CreateTab({Name = "Helpers",         Icon = "eye",            ImageSource = "Lucide", ShowTitle = true})
-local OthersTab  = Window:CreateTab({Name = "Others",          Icon = "alert-triangle", ImageSource = "Lucide", ShowTitle = true})
-local HitboxTab  = Window:CreateTab({Name = "🎯 Hitboxes",     Icon = "target",         ImageSource = "Lucide", ShowTitle = true})
-local UtilTab    = Window:CreateTab({Name = "⚙️ Utilities",    Icon = "settings",       ImageSource = "Lucide", ShowTitle = true})
-local InfoTab    = Window:CreateTab({Name = "📊 Info",          Icon = "info",           ImageSource = "Lucide", ShowTitle = true})
+local SpinsTab   = Window:CreateTab({Name = "🎰 Spins",      Icon = "casino",        ShowTitle = true})
+local RankedTab  = Window:CreateTab({Name = "🏐 Ranked",     Icon = "sports_volleyball", ShowTitle = true})
+local MiscTab    = Window:CreateTab({Name = "⚙️ Misc",        Icon = "settings",      ShowTitle = true})
+local CharTab    = Window:CreateTab({Name = "Character",      Icon = "person",        ShowTitle = true})
+local HelpersTab = Window:CreateTab({Name = "Helpers",        Icon = "visibility",    ShowTitle = true})
+local OthersTab  = Window:CreateTab({Name = "Others",         Icon = "warning",       ShowTitle = true})
+local HitboxTab  = Window:CreateTab({Name = "🎯 Hitboxes",    Icon = "gps_fixed",     ShowTitle = true})
+local UtilTab    = Window:CreateTab({Name = "⚙️ Utilities",   Icon = "build",         ShowTitle = true})
+local InfoTab    = Window:CreateTab({Name = "📊 Info",         Icon = "info",          ShowTitle = true})
 
 -- Rank section and all Misc content created inside _createMiscContent (password-gated below)
 local selectedRank = 1
